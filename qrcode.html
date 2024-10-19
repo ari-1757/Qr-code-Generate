@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>QR-Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="container">
+    <h1>QR-Code</h1>
+    <h2>Enter the text</h2>
+    <input class="qr-enter" placeholder="Enter the text" type="text" id="qr-content" value="">
+    <button onclick="genqrcode()">Generate QR Code</button>
+    <div class="display-code">
+        <div class="discode"></div>
+    </div></div>
+    <script>
+        function genqrcode(){
+            var text = document.querySelector(".qr-enter").value; // Correct class selector
+            var displayCode = document.querySelector(".discode");
+            displayCode.innerHTML = ""; // Clear previous QR code
+
+            if (text.trim() === "") {
+                alert("Please enter some text.");
+                return;
+            }
+
+            // Generate new QR code
+            new QRCode(displayCode, {
+                text: text,
+                width: 200,
+                height: 200,
+                colorDark: "#222831",
+                colorLight: "#EEEEEE"
+            });
+        }
+    </script>
+</body>
+</html>
